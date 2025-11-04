@@ -1,10 +1,18 @@
+#!/bin/env bash
 cd src
 
-python -m venv pythonenv
+echo "venv von apt installiert "
+sudo apt install python3-venv -y > /dev/null 2>&1
 
+echo "Python enveiremnt erstellt mit name pythonenv"
+python3 -m venv pythonenv
+
+echo "pythonenv activiert "
 source pythonenv/bin/activate
 
-pip install sympy
+echo "Package installieren "
+pip install sympy > /dev/null 2>&1
 
+echo "fertig"
 deactivate
 
