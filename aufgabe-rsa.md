@@ -66,8 +66,7 @@ Nachricht ist mit dem Schlüssel des Servers verschlüsselt. Der Server
 MUSS die entschlüsselte Nachricht auf ``stdout`` ausgeben. Der Server
 KANN die Nachricht in ein Log schreiben und KANN prüfen ob die Nachricht
 erkennbar wohlgeformt ist. Die unverschlüsselte Nachricht enthält, bis
-auf Padding, UTF-8 Text Die unverschlüsselte Nachricht enthält, bis auf
-Padding, UTF-8 Text.
+auf Padding, UTF-8 Text.
 
 ## Anforderungen/Bewertung
 

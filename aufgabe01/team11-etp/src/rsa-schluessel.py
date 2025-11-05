@@ -20,7 +20,7 @@ d = pow(e, -1, phi)
 
 e_hex = hex(e)[2:]
 
-N_hex = format(N, 'x').rjust(128, '0') 
+N_hex = hex(N)[2:] 
 
 anzahl_bits = N.bit_length()
 print(f'N ist {anzahl_bits}')

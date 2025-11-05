@@ -40,17 +40,29 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                 if not data:
                     break
                 message = data.decode()
-                # wenn der pubkey angefragt wird 
+                # wenn der pubkey angefragt wird
                 if message.strip() == "GET pubkey ETP/2025":
                     antwort = f"pub: {e_hex}\\nN: {N_hex}\\n"
                     print("public key send")
                     conn.sendall(antwort.encode())
-                    #antwort = f"<<cipher>>{rsa_encrypt(2343,e,N)}"
+
+                    #nachricht = "Hallo World!"
+                    #print(nachricht)
+                    #nachricht_bytes = nachricht.encode()
+                    #print(nachricht_bytes)
+                    #nachricht_int = int.from_bytes(nachricht_bytes, byteorder='big')
+                    #print(f"user Nachricht:{nachricht_int}")
+                    #antwort = f"\n<<cipher>>{rsa_encrypt(nachricht_int,e,N)}"
                     #conn.sendall(antwort.encode())
-                # ansonsten die nachricht enschlüsseln 
+                # ansonsten die nachricht enschlüsseln
                 else:
-                    ciphretext = rsa_decrypt(int(message), d, N)
-                    print(f"ciphrertext:{ciphretext}")
-                
-                
-                
+
+                    print(f"nachricht:{message}")
+                    ciphertext = rsa_decrypt(int(message), d, N)
+                    # <cipher> in byts umwandeln mit padding (512 bit)
+                    text = ciphertext.to_bytes((ciphertext.bit_length() + 7)//8, "big" )
+                    print(text)
+                    # dann die byts zu ascii zeichen
+                    text_ascii = text.decode();
+                    print(text_ascii)
+
