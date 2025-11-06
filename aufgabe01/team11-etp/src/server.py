@@ -16,7 +16,7 @@ with open('pubkey', 'r') as f:
     e = int(lines[0].split(':')[1].strip())
     e_hex = hex(e)[2:]
     N = int(lines[1].split(':')[1].strip())
-    N_hex = hex(N)[2:]
+    N_hex = format(N, 'x').rjust(128,'0')
 with open('privkey', 'r') as f:
     lines = f.readlines()
     d = int(lines[0].split(':')[1].strip())
@@ -42,7 +42,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                 message = data.decode()
                 # wenn der pubkey angefragt wird
                 if message.strip() == "GET pubkey ETP/2025":
-                    antwort = f"pub: {e_hex}\\nN: {N_hex}\\n"
+                    antwort = f"pub: {e_hex}\nN: {N_hex}\n"
                     print("public key send")
                     conn.sendall(antwort.encode())
 
