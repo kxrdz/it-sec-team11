@@ -45,23 +45,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
                     antwort = f"pub: {e_hex}\nN: {N_hex}\n"
                     print("public key send")
                     conn.sendall(antwort.encode())
-
-                    #nachricht = "Hallo World!"
-                    #print(nachricht)
-                    #nachricht_bytes = nachricht.encode()
-                    #print(nachricht_bytes)
-                    #nachricht_int = int.from_bytes(nachricht_bytes, byteorder='big')
-                    #print(f"user Nachricht:{nachricht_int}")
-                    #antwort = f"\n<<cipher>>{rsa_encrypt(nachricht_int,e,N)}"
-                    #conn.sendall(antwort.encode())
-                # ansonsten die nachricht enschlüsseln
                 else:
 
-                    print(f"nachricht:{message}")
+                    
+                    message = int(message, 16)
+                    #print(f"nachricht:{message}")
                     ciphertext = rsa_decrypt(int(message), d, N)
                     # <cipher> in byts umwandeln mit padding (512 bit)
                     text = ciphertext.to_bytes((ciphertext.bit_length() + 7)//8, "big" )
-                    print(text)
                     # dann die byts zu ascii zeichen
                     text_ascii = text.decode();
                     print(text_ascii)

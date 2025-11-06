@@ -30,6 +30,8 @@ Nachrichtenkommunikation ist 512 Bit, die Nachrichten sind ggf. mit
 Null-Bytes auf volle Blockgröße zu padden bevor sie verschlüsselt
 werden.
 
+111-b87752fde74727738d6b15a243cc9e87
+
 1. C -> S: ``GET pubkey ETP/2025``
 2. S -> C: ``pub: <pubkey>\nN: <modul>\n``
 3. C -> S: ``<ciphertext>``
