@@ -18,15 +18,11 @@ assert gcd(e, phi) == 1
 # Schritt 5: d berechnen
 d = pow(e, -1, phi)
 
-e_hex = hex(e)[2:]
-
-N_hex = hex(N)[2:] 
-
 anzahl_bits = N.bit_length()
-print(f'N ist {anzahl_bits}')
+
+print(f'N ist {anzahl_bits} bits')
 with open("pubkey", "w") as file:
     file.write(f"e:{e}\nN: {N}")
-
 
 with open("privkey", "w") as file:
     file.write(f"d:{d}\nN:{N}")
